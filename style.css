@@ -1,0 +1,545 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+#loginButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #333; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#loginButton:hover {
+    background-color: #555; /* Hover color */
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+h1{
+    color: #333;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li{
+    background-color: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #D9DB77;
+    gap: 10px;
+    text-wrap: nowrap;
+}
+
+#sidemenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%; /* Set the width to 100% to span across the screen */
+    background-color: #a5bed5; /* Background color for the menu */
+
+    flex-direction: row; /* Arrange items in a row (horizontal) */
+    align-items: center; /* Vertically center items */
+    z-index: 1000; /* To ensure it stays on top */
+    text-wrap: nowrap;
+}
+#sidemenu li {
+    width: 100%; /* Ensure the items take up full width of the menu */
+    margin: 10px 0;
+    text-align: center;
+}
+
+#sidemenu a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: rgb(7, 24, 23);
+    font-size: 18px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.nav ul{
+    display: flex;
+    list-style: none;
+    text-wrap: nowrap;
+}
+
+.nav ul li {
+    position: relative;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #587033;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+nav ul li:hover a{
+    background-color: #A1BD6B;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+}
+
+.logo img {
+    width: 200px;
+    height: 200px;
+    vertical-align: middle;
+}
+
+
+.hero {
+    height: 90vh;
+    background: url('download.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero h2 {
+    font-size: 3rem;
+}
+
+.hero button {
+    padding: 1rem 2rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.categories ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.categories li{
+    position: relative;
+    padding: 10px;
+}
+
+.categories a{
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: block;
+}
+
+.product {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+img {
+    max-width: 200px;
+    height: auto;
+}
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for the dropdown button */
+.dropdown-btn {
+    background-color: #f0c040;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    min-width: 200px;
+    z-index: 1;
+   
+}
+
+.dropdown-content li a{
+    display: block;
+    padding: 10px;;
+    color: #f0e02f;
+    
+}
+
+.dropdown-content li a:hover{
+    background-color: #f0e02f;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+nav ul li:hover .dropdown-content{
+    display: block;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
+}
+
+/* Dropdown items */
+.dropdown-content .category-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content .category-item:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Subcategories */
+.subcategory {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.category-item:hover .subcategory {
+    display: block;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.category-item {
+    color: clack;
+    padding: 12px 16px;
+    display: block;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.category-item:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    background-color: #D9DB77;
+}
+
+/* Product Grid Styles */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.product {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Price styling */
+.product p:last-child {
+    font-weight: bold;
+    color: #E74C3C;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: red;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.loginPage {
+    display: none;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: #f2f2f2;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3;
+}
+
+.footer-column ul li a:hover {
+    color: #f39c12;
+}
+
+.footer-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.footer-signup p{
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-signup a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-signup a:hover {
+    color: #f39c12;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-icons a{
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.social-icons img:hover {
+    filter: none;
+}
+

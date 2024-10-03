@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+</head>
+<body>
+    <h1>Order History</h1>
+    <div id="orderHistory"></div>
+
+    <script>
+        const FIREBASE_ORDER_HISTORY_URL = 'https://firestore.googleapis.com/v1/projects/onlineshopping-31b9b/databases/(default)/documents/order history';
+
+        // Function to load order history
+        async function loadOrderHistory() {
+            const orderHistoryContainer = document.getElementById('orderHistory');
+            try {
+                const response = await fetch(FIREBASE_ORDER_HISTORY_URL);
+                const data = await response.json();
+
+                if (data.documents) {
+                    data.documents.forEach(doc => {
+                        const order = doc.fields;
+
+                        let itemsHTML = '';
+                        order.items.arrayValue.values.forEach(item => {
+                            const itemData = item.mapValue.fields;
+                            itemsHTML += `
+                                <div class="order-item">
+                                    <img src="${itemData.image.stringValue}" alt="${itemData.name.stringValue}" style="width: 100px; height: 100px;">
+                                    <h3>${itemData.name.stringValue}</h3>
+                                    <p>Price: $${itemData.price.doubleValue}</p>
+                                    <p>${itemData.description.stringValue}</p>
+                                </div>
+                            `;
+                        });
+
+                        const orderHTML = `
+                            <div class="order">
+                                <h3>Order Date: ${new Date(order.timestamp.timestampValue).toLocaleString()}</h3>
+                                <div>${itemsHTML}</div>
+                                <hr>
+                            </div>
+                        `;
+                        orderHistoryContainer.innerHTML += orderHTML;
+                    });
+                } else {
+                    orderHistoryContainer.innerHTML = '<p>No orders found.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading order history:', error);
+                orderHistoryContainer.innerHTML = '<p>Error loading order history. Please try again later.</p>';
+            }
+        }
+
+        window.onload = loadOrderHistory;
+    </script>
+</body>
+</html>

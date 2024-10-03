@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Category Management</h1>
+    <main>
+        <section>
+            <div class="container">
+                <h2>Category Name</h2>
+
+    <form id="categoryForm">
+        <input type="text" id="categoryName" placeholder="Category Name" required><br>
+        <button type="submit">Add Category</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script src="category.js"></script>
+    </div>
+</section>
+
+<a href="index.html">Go Back</a>
+
+<script src="https://code.jquery.com/query-3.6.0.min.js"></script>
+<script>
+    const apiUrl = 'https://localhost:3000/api/category';
+</script>
+</main>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script> 
+
+        <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script> 
+
+        <script src="category.js"> 
+
+ 
+
+  // Initialize Firebase 
+
+  const app = firebase.initializeApp(firebaseConfig); 
+
+  const db = firebase.firestore(); 
+
+        </script> 
+
+
+</body>
+</html>

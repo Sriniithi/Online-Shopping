@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Admin Login</h1>
+    <form id="adminLoginForm">
+        <input type="email" id="adminEmail" placeholder="Admin Email" required><br>
+        <input type="password" id="adminPassword" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+    <div id="errorMessage" style="color:red;"></div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+
+            const adminEmail = 'srinithi18@gmail.com'; // Admin email
+            const adminPassword = 'admin123'; // Admin password
+
+            // Check credentials
+            if (email === adminEmail && password === adminPassword) {
+                window.location.href = 'admin-dashboard.html'; // Redirect to the dashboard
+            } else {
+                document.getElementById('errorMessage').innerText = 'Invalid Admin Credentials';
+            }
+        });
+    </script>
+</body>
+</html>

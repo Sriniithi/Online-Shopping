@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .cart-details {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cartItems"></div>
+
+    <div id="confirmOrderButton"></div>
+
+    <script>
+        // Fetch cart items from localStorage and display them
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartContainer = document.getElementById('cartItems');
+        
+        if (cartItems.length > 0) {
+            cartItems.forEach(item => {
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div>
+                            <h3>${item.name}</h3>
+                            <p>Price: $${item.price}</p>
+                            <p>${item.description}</p>
+                        </div>
+                    </div>
+                `;
+                cartContainer.innerHTML += itemHTML;
+            });
+
+            // Add the Confirm Order button only if there are items in the cart
+            document.getElementById('confirmOrderButton').innerHTML = `
+                <button onclick="confirmOrder()">Confirm Order</button>
+            `;
+        } else {
+            cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        }
+
+        // Function to handle order confirmation
+        function confirmOrder() {
+            if (cartItems.length > 0) {
+                sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Store cart items in sessionStorage
+                window.location.href = 'payment.html';  // Redirect to payment page
+            } else {
+                alert('Your cart is empty!');
+            }
+        }
+    </script>
+</body>
+</html>

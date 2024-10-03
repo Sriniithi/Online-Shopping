@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Welcome Button -->
+    <section class="hero">
+        <h1>It was all Yellow!</h1>
+        <button onclick="window.location.href='login.html'">Login</button>
+        <section>
+            <h2>Available products</h2>
+            <ul id="productList"></ul>
+        </section>
+
+    </div>
+</body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Yellow Logo" width="100" height="100">
+        </div>
+
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Your one-stop destination for all your shopping needs</h2>
+            <p>Discover the Best Products</p>
+            <button>Welcome</button>
+        </section>  
+
+
+        <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+    <!-- Banner Section -->
+    <section class="section banner active" aria-label="banner" data-section>
+        <div class="container">
+            <!-- Banner Content -->
+            <h2>Special Offer!</h2>
+            <p>Don't miss our limited-time deals.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer active" data-section>
+        <div class="container">
+            <!-- Footer Content (Links, Social Media, etc.) -->
+            <p>&copy; 2024 My Store. All rights reserved.</p>
+        </div>
+
+
+        <div class="footer-column">
+            <h3>SHOP</h3>
+            <ul>
+                <li><a href="#">Ladies</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Baby</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">Sport</a></li>
+                <li><a href="#">Magazine</a></li>
+            </ul>
+        </div>
+
+
+        <!-- Corporate Info Section -->
+        <div class="footer-column">
+            <h3>CORPORATE INFO</h3>
+            <ul>
+                <li><a href="#">Career </a></li>
+                <li><a href="#">About our Group</a></li>
+                <li><a href="#">Sustainability Group</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Investor Relations</a></li>
+                <li><a href="#">Corporate Governance</a></li>
+            </ul>
+        </div>
+
+        <!-- Help Section -->
+        <div class="footer-column">
+            <h3>HELP</h3>
+            <ul>
+                <li><a href="#">Customer Service</a></li>
+                <li><a href="#">My Store</a></li>
+                <li><a href="#">Find a Store</a></li>
+                <li><a href="#">Legal & Privacy</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Report a Scam</a></li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li><a href="#">Cookie Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Signup Section -->
+        <div class="footer-signup">
+            <p>Sign up now and be the first to know about exclusive offers, latest fashion news & style tips!</p>
+            <a href="#">Read more &#10132;</a>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Pinterest"></a>
+            </div>
+        </div>
+    </footer>
+    <button type="submit" id="submitBtn" disabled>Add Data</button>
+
+<script>
+  const form = document.getElementById('form');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('input', () => {
+    if (form.checkValidity()) {
+      submitBtn.disabled = false;
+    } else {
+      submitBtn.disabled = true;
+    }
+  });
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        .payment-details {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Details</h1>
+    <div id="paymentDetails"></div>
+
+    <form id="paymentForm">
+        <label for="cardNumber">Card Number:</label><br>
+        <input type="text" id="cardNumber" name="cardNumber" required><br>
+        
+        <label for="expiryDate">Expiry Date:</label><br>
+        <input type="text" id="expiryDate" name="expiryDate" required><br>
+        
+        <label for="cvv">CVV:</label><br>
+        <input type="text" id="cvv" name="cvv" required><br><br>
+        
+        <button type="button" onclick="confirmPayment()">Confirm Payment</button>
+    </form>
+
+    <script>
+        const FIREBASE_URL = 'https://firestore.googleapis.com/v1/projects/onlineshopping-31b9b/databases/(default)/documents/order history';
+
+        // Get the cart items from sessionStorage
+        const cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+
+        const paymentContainer = document.getElementById('paymentDetails');
+        if (cartItems && cartItems.length > 0) {
+            cartItems.forEach(item => {
+                const itemHTML = `
+                    <div class="payment-details">
+                        <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px;">
+                        <h3>${item.name}</h3>
+                        <p>Price: $${item.price}</p>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                paymentContainer.innerHTML += itemHTML;
+            });
+        } else {
+            paymentContainer.innerHTML = '<p>No items available for payment.</p>';
+        }
+
+        // Function to handle payment confirmation
+        async function confirmPayment() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (cardNumber && expiryDate && cvv) {
+                try {
+                    // Prepare order details to be stored in Firestore "OrderHistory"
+                    const orderDetails = {
+                        fields: {
+                            items: {
+                                arrayValue: {
+                                    values: cartItems.map(item => ({
+                                        mapValue: {
+                                            fields: {
+                                                name: { stringValue: item.name },
+                                                price: { doubleValue: parseFloat(item.price) },
+                                                description: { stringValue: item.description },
+                                                image: { stringValue: item.image }
+                                            }
+                                        }
+                                    }))
+                                }
+                            },
+                            payment: {
+                                mapValue: {
+                                    fields: {
+                                        cardNumber: { stringValue: cardNumber },
+                                        expiryDate: { stringValue: expiryDate }
+                                    }
+                                }
+                            },
+                            timestamp: { timestampValue: new Date().toISOString() }
+                        }
+                    };
+
+                    // Make POST request to Firestore REST API to save the order
+                    const response = await fetch(FIREBASE_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(orderDetails)
+                    });
+
+                    if (response.ok) {
+                        alert('Payment successful! Order has been placed.');
+                        localStorage.removeItem('cart');  // Clear the cart after successful payment
+                        sessionStorage.removeItem('cartItems');  // Clear session storage
+                        window.location.href = 'success.html';  // Redirect to success page
+                    } else {
+                        throw new Error('Error saving order to Firestore.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an issue processing your order. Please try again.');
+                }
+            } else {
+                alert('Please fill all payment details.');
+            }
+        }
+    </script>
+</body>
+</html>

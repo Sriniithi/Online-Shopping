@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link rel="stlyesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Management</h1>
+        <main>
+            <section>
+                <div class="container">
+                    <h2>Add</h2>
+                    
+        <form id="customerForm">
+            <input type="text" id="customerName" placeholder="Name" required><br>
+            <input type="email" id="customerEmail" placeholder="Email" required><br>
+            <input type="text" id="customerMob" placeholder="Mobile" required><br>
+            <input type="number" id="customerCreditLimit" placeholder="Credit Limit" value="0" required><br>
+            <button type="submit">Add Customer</button>
+        </form>
+
+        <p id="responseMessageCustomer"></p>
+
+        <script src="customer.js"></script>
+        </div>
+</section>
+
+<a href="index.html">Go Back</a>
+
+<script>
+    // Add Customer to Firebase
+    document.getElementById('customerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('customerName').value;
+      const email = document.getElementById('customerEmail').value;
+      const mob = document.getElementById('customerMob').value;
+      const credit = document.getElementById('customerCredit').value;
+
+      db.collection('Customer').add({
+        Name: name,
+        Email: email,
+        Mob: mob,
+        CreditLimit: credit
+      }).then(() => {
+        document.getElementById('message').innerHTML = "Customer added successfully!";
+      }).catch((error) => {
+        document.getElementById('message').innerHTML = "Error: " + error.message;
+      });
+    });
+  </script>
+</body>
+</html>
+
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+    <script src="customer.js">
+    
+  // Initialize Firebase
+  
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+        </script>
+
+</body>
+</html>
+
+    </div>
+</body>
+</html>

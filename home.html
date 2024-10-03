@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Products</h1>
+    <div id="productList"></div>
+
+    
+
+
+    <div class="navbar">
+        <div class="logo">MyStore</div>
+        <div class="nav-items">
+            <a href="profile.html">Profile</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="cart.html">My Cart</a>
+        </div>
+        <div class="logout" onclick="logout()">Logout</div>
+    </div>
+ 
+    
+ 
+    <div class="container">
+        <!-- <h1>Available Products</h1> -->
+        <!-- <div class="product-list" id="productList"> -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="product.js"></script>
+</body>
